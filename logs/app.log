@@ -1,0 +1,41 @@
+[2021-08-26T08:53:41.698] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'ollagaza', 1 ],
+  __knexQueryUid: '7269e5e7-972e-4f59-8a8d-25dabf9f3640',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-08-26T08:53:41.708] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-08-26 08:08:41', 4 ],
+  __knexQueryUid: 'd82c64b0-9f0a-48bd-9e50-1fe0346f3a76',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-08-26T08:53:41.714] [WARN] default - [MySQL]
+ .returning() is not supported by mysql and will not have any effect.
+[2021-08-26T08:53:41.714] [DEBUG] default - [MySQL]
+ {
+  method: 'insert',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '0000', 'login', 4, '127.0.0.1' ],
+  __knexQueryUid: '621c5fab-f971-4af9-8439-bd31c5907e01',
+  sql: 'insert into `member_log` (`log_code`, `log_text`, `member_seq`, `used_ipaddress`) values (?, ?, ?, ?)'
+}
+[2021-08-26T09:10:47.764] [ERROR] default - [ GET /users/me ]
+ 요청하신 API Endpoint가 존재하지 않습니다.
+[2021-08-26T09:10:47.765] [ERROR] default - [ GET /users/me ]
+ App {
+  error: -1,
+  message: '요청하신 API Endpoint가 존재하지 않습니다.',
+  variables: {},
+  httpStatusCode: 404
+}
