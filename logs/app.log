@@ -1,4 +1,4 @@
-[2021-09-08T12:03:34.918] [INFO] default - {
+[2021-09-10T12:16:51.731] [INFO] default - {
   ENV: 'development',
   IS_RELEASE: false,
   IS_DEV: true,
@@ -9,61 +9,88 @@
   MYSQL_HOST: null,
   MONGODB_HOST: null
 }
-[2021-09-08T12:03:36.159] [DEBUG] default - add api ./d1/auth.js /d1/auth
-[2021-09-08T12:03:36.161] [DEBUG] default - add api ./d1/test.js /d1/test
-[2021-09-08T12:03:36.163] [DEBUG] default - add api ./d1/users.js /d1/users
-[2021-09-08T12:03:36.190] [DEBUG] default - Listening on port 3600 -> PID: 1256
-[2021-09-08T12:03:36.190] [DEBUG] default - [InitService] init start
-[2021-09-08T12:03:36.326] [DEBUG] default - [MySQL]
+[2021-09-10T12:16:52.940] [DEBUG] default - add api ./d1/auth.js /d1/auth
+[2021-09-10T12:16:52.945] [DEBUG] default - add api ./d1/test.js /d1/test
+[2021-09-10T12:16:52.948] [DEBUG] default - add api ./d1/users.js /d1/users
+[2021-09-10T12:16:52.976] [DEBUG] default - Listening on port 3600 -> PID: 6696
+[2021-09-10T12:16:52.976] [DEBUG] default - [InitService] init start
+[2021-09-10T12:16:53.114] [DEBUG] default - [MySQL]
  {
   method: 'select',
   options: {},
   timeout: false,
   cancelOnTimeout: false,
   bindings: [],
-  __knexQueryUid: '9319e72e-a4d4-4c95-be4b-a8692aefe9f8',
+  __knexQueryUid: '8703be4d-6846-4beb-8b90-f1dccf8e6b59',
   sql: 'select * from `service_config`'
 }
-[2021-09-08T12:03:36.343] [DEBUG] default - [InitService] init complete
-[2021-09-08T12:05:18.208] [DEBUG] default - [MySQL]
+[2021-09-10T12:16:53.120] [DEBUG] default - [InitService] init complete
+[2021-09-10T12:17:04.350] [DEBUG] default - [MySQL]
  {
   method: 'first',
   options: {},
   timeout: false,
   cancelOnTimeout: false,
   bindings: [ 'test', 1 ],
-  __knexQueryUid: '4a40dfe4-4971-490b-8a56-6fab2a1433ae',
+  __knexQueryUid: '82b096b9-86dd-47ff-b32c-1c52da887886',
   sql: 'select * from `member` where `user_id` = ? limit ?'
 }
-[2021-09-08T12:05:18.225] [DEBUG] default - [MySQL]
+[2021-09-10T12:17:04.361] [DEBUG] default - [MySQL]
  {
   method: 'update',
   options: {},
   timeout: false,
   cancelOnTimeout: false,
-  bindings: [ '2021-09-08 12:09:18', 1 ],
-  __knexQueryUid: '31707303-0f51-47b9-bbd2-a6c03db30ad8',
+  bindings: [ '2021-09-10 12:09:04', 1 ],
+  __knexQueryUid: '0ba13cfe-240e-4e78-8f31-e6feb52e86cd',
   sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
 }
-[2021-09-08T12:05:18.233] [WARN] default - [MySQL]
+[2021-09-10T12:17:04.374] [WARN] default - [MySQL]
  .returning() is not supported by mysql and will not have any effect.
-[2021-09-08T12:05:18.234] [DEBUG] default - [MySQL]
+[2021-09-10T12:17:04.375] [DEBUG] default - [MySQL]
  {
   method: 'insert',
   options: {},
   timeout: false,
   cancelOnTimeout: false,
   bindings: [ '0000', 'login', 1, '127.0.0.1' ],
-  __knexQueryUid: '84bf5167-7828-48c3-8a36-befb9574a2fd',
+  __knexQueryUid: '45e6cf67-0c1d-402b-83cd-242681544357',
   sql: 'insert into `member_log` (`log_code`, `log_text`, `member_seq`, `used_ipaddress`) values (?, ?, ?, ?)'
 }
-[2021-09-08T12:05:18.252] [DEBUG] default - [MySQL]
+[2021-09-10T12:17:04.392] [DEBUG] default - [MySQL]
  {
   method: 'first',
   options: {},
   timeout: false,
   cancelOnTimeout: false,
   bindings: [ 1, 1 ],
-  __knexQueryUid: '6e960134-dd10-435f-a17d-1352e4671e2e',
+  __knexQueryUid: 'adc92e22-629d-4089-85e6-bca994e6cc08',
   sql: 'select * from `member` where `seq` = ? limit ?'
 }
+[2021-09-10T12:17:10.300] [INFO] default - {
+  ENV: 'development',
+  IS_RELEASE: false,
+  IS_DEV: true,
+  IS_LOCAL: false,
+  IS_DEMON: false,
+  PRINT_DB_LOG: true,
+  LOG_PATH: 'logs',
+  MYSQL_HOST: null,
+  MONGODB_HOST: null
+}
+[2021-09-10T12:17:10.954] [DEBUG] default - add api ./d1/auth.js /d1/auth
+[2021-09-10T12:17:10.956] [DEBUG] default - add api ./d1/test.js /d1/test
+[2021-09-10T12:17:10.958] [DEBUG] default - add api ./d1/users.js /d1/users
+[2021-09-10T12:17:10.983] [DEBUG] default - Listening on port 3600 -> PID: 12016
+[2021-09-10T12:17:10.983] [DEBUG] default - [InitService] init start
+[2021-09-10T12:17:11.042] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [],
+  __knexQueryUid: '2601a9b8-192a-4f2b-bfe8-4c7871ae927a',
+  sql: 'select * from `service_config`'
+}
+[2021-09-10T12:17:11.047] [DEBUG] default - [InitService] init complete
