@@ -261,7 +261,7 @@ export default class MysqlModel {
       } else {
         return result.total_count
       }
-    }
+    }govl
 
     arrayToSafeQuery = (columns) => {
       arrayToSafeQuery(this.database, columns)
