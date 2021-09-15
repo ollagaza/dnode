@@ -1,4 +1,4 @@
-[2021-09-10T12:16:51.731] [INFO] default - {
+[2021-09-15T09:11:39.328] [INFO] default - {
   ENV: 'development',
   IS_RELEASE: false,
   IS_DEV: true,
@@ -9,65 +9,888 @@
   MYSQL_HOST: null,
   MONGODB_HOST: null
 }
-[2021-09-10T12:16:52.940] [DEBUG] default - add api ./d1/auth.js /d1/auth
-[2021-09-10T12:16:52.945] [DEBUG] default - add api ./d1/test.js /d1/test
-[2021-09-10T12:16:52.948] [DEBUG] default - add api ./d1/users.js /d1/users
-[2021-09-10T12:16:52.976] [DEBUG] default - Listening on port 3600 -> PID: 6696
-[2021-09-10T12:16:52.976] [DEBUG] default - [InitService] init start
-[2021-09-10T12:16:53.114] [DEBUG] default - [MySQL]
+[2021-09-15T09:11:48.503] [DEBUG] default - add api ./d1/auth.js /d1/auth
+[2021-09-15T09:11:48.506] [DEBUG] default - add api ./d1/test.js /d1/test
+[2021-09-15T09:11:48.508] [DEBUG] default - add api ./d1/users.js /d1/users
+[2021-09-15T09:11:48.511] [DEBUG] default - add api ./s1/auth.js /s1/auth
+[2021-09-15T09:11:48.514] [DEBUG] default - add api ./s1/test.js /s1/test
+[2021-09-15T09:11:48.517] [DEBUG] default - add api ./s1/users.js /s1/users
+[2021-09-15T09:11:48.572] [DEBUG] default - Listening on port 3600 -> PID: 22048
+[2021-09-15T09:11:48.573] [DEBUG] default - [InitService] init start
+[2021-09-15T09:11:49.090] [DEBUG] default - [MySQL]
  {
   method: 'select',
   options: {},
   timeout: false,
   cancelOnTimeout: false,
   bindings: [],
-  __knexQueryUid: '8703be4d-6846-4beb-8b90-f1dccf8e6b59',
+  __knexQueryUid: 'd35b6722-afa9-45bd-9572-cf1267210b89',
   sql: 'select * from `service_config`'
 }
-[2021-09-10T12:16:53.120] [DEBUG] default - [InitService] init complete
-[2021-09-10T12:17:04.350] [DEBUG] default - [MySQL]
- {
-  method: 'first',
-  options: {},
-  timeout: false,
-  cancelOnTimeout: false,
-  bindings: [ 'test', 1 ],
-  __knexQueryUid: '82b096b9-86dd-47ff-b32c-1c52da887886',
-  sql: 'select * from `member` where `user_id` = ? limit ?'
-}
-[2021-09-10T12:17:04.361] [DEBUG] default - [MySQL]
- {
-  method: 'update',
-  options: {},
-  timeout: false,
-  cancelOnTimeout: false,
-  bindings: [ '2021-09-10 12:09:04', 1 ],
-  __knexQueryUid: '0ba13cfe-240e-4e78-8f31-e6feb52e86cd',
-  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
-}
-[2021-09-10T12:17:04.374] [WARN] default - [MySQL]
- .returning() is not supported by mysql and will not have any effect.
-[2021-09-10T12:17:04.375] [DEBUG] default - [MySQL]
- {
-  method: 'insert',
-  options: {},
-  timeout: false,
-  cancelOnTimeout: false,
-  bindings: [ '0000', 'login', 1, '127.0.0.1' ],
-  __knexQueryUid: '45e6cf67-0c1d-402b-83cd-242681544357',
-  sql: 'insert into `member_log` (`log_code`, `log_text`, `member_seq`, `used_ipaddress`) values (?, ?, ?, ?)'
-}
-[2021-09-10T12:17:04.392] [DEBUG] default - [MySQL]
+[2021-09-15T09:11:49.130] [DEBUG] default - [InitService] init complete
+[2021-09-15T09:12:07.328] [DEBUG] default - [MySQL]
  {
   method: 'first',
   options: {},
   timeout: false,
   cancelOnTimeout: false,
   bindings: [ 1, 1 ],
-  __knexQueryUid: 'adc92e22-629d-4089-85e6-bca994e6cc08',
+  __knexQueryUid: '315a9ff9-37e0-4e0c-bd23-1e6859991390',
   sql: 'select * from `member` where `seq` = ? limit ?'
 }
-[2021-09-10T12:17:10.300] [INFO] default - {
+[2021-09-15T09:12:10.018] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: 'b6f04597-7979-401d-9c89-84cd95f9ff0a',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T09:12:12.537] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0, 'Y' ],
+  __knexQueryUid: 'c1b8320c-ecf0-48fe-b3d0-932733a04597',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? and `is_used` = ? order by `seq` desc'
+}
+[2021-09-15T09:12:13.720] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0, 'N' ],
+  __knexQueryUid: 'bb23b10b-ec55-4abb-9bd4-fd020479fb83',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? and `is_used` = ? order by `seq` desc'
+}
+[2021-09-15T09:12:19.269] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0, 'N' ],
+  __knexQueryUid: 'fccf8620-c434-4923-ac0a-fac2dadf2eaf',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? and `is_used` = ? order by `seq` desc'
+}
+[2021-09-15T09:12:21.415] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0, 'N', '%t%' ],
+  __knexQueryUid: '8903f3e1-5c3c-4ef7-8504-47bbb3581731',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? and `is_used` = ? and `user_name` like ? order by `seq` desc'
+}
+[2021-09-15T09:12:25.478] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0, 'N', '%유%' ],
+  __knexQueryUid: '115b63be-ebe7-4117-bb52-69f4235dd7dc',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? and `is_used` = ? and `user_name` like ? order by `seq` desc'
+}
+[2021-09-15T09:12:31.589] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0, 'N' ],
+  __knexQueryUid: '811726f3-dede-40d0-b74f-336943e6ef37',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? and `is_used` = ? order by `seq` desc'
+}
+[2021-09-15T09:21:11.881] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: '9ce1439f-56fe-4449-8987-69ea554897e1',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T09:21:14.986] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: '90119b1e-173b-4549-9d33-fe4d86c06a00',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T09:21:16.391] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: 'a5daf38f-9861-4804-a3bc-242e0c03e9fb',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T09:21:16.902] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: '394c846c-4fc0-4e6d-8d65-06566a66229d',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T09:21:26.053] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: '1db307fc-0613-4c35-9b0a-99ca4abee057',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T09:21:30.134] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: 'ac5c55ac-a975-4253-9cc9-bf4afa8eaaec',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T09:21:42.496] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: '4d277cce-ac01-40dc-829a-6e94aa89683c',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T09:21:45.691] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: 'd1da0496-06ae-48e9-acaa-eed7280a247f',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T09:21:52.589] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: 'dc7bad53-cdbe-4b01-8a9d-5b3d7558010d',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T09:21:56.636] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: '135ae002-d8f8-4885-9da7-042414c8847f',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T09:22:01.745] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: '70c052f9-423f-43a0-9b66-816d8fe35bff',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T09:22:12.079] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: '2bb82d34-d4cb-4a48-b3ff-862b4e8141bb',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T09:22:24.764] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: '4d7facca-7e87-4099-ba3f-73513a4927b0',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T09:22:26.142] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: '0355aad5-5fbc-4664-ab15-7279baa0d74c',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T09:40:27.326] [WARN] default - [MySQL]
+ .returning() is not supported by mysql and will not have any effect.
+[2021-09-15T09:40:27.327] [DEBUG] default - [MySQL]
+ {
+  method: 'insert',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '1009', 'logout', 1, '127.0.0.1' ],
+  __knexQueryUid: '8dd0a3c6-cc8b-4904-9605-3c0196aebd1f',
+  sql: 'insert into `member_log` (`log_code`, `log_text`, `member_seq`, `used_ipaddress`) values (?, ?, ?, ?)'
+}
+[2021-09-15T09:40:27.339] [ERROR] default - [MemberLogServiceClass] [memberLeaveLog] Error: ER_BAD_FIELD_ERROR: Unknown column 'log_code' in 'field list'
+    at Query.Sequence._packetToError (D:\Source\datamanagersystem\dnode\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+    at Query.ErrorPacket (D:\Source\datamanagersystem\dnode\node_modules\mysql\lib\protocol\sequences\Query.js:79:18)
+    at Protocol._parsePacket (D:\Source\datamanagersystem\dnode\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (D:\Source\datamanagersystem\dnode\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (D:\Source\datamanagersystem\dnode\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (D:\Source\datamanagersystem\dnode\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (D:\Source\datamanagersystem\dnode\node_modules\mysql\lib\Connection.js:88:28)
+    at Socket.<anonymous> (D:\Source\datamanagersystem\dnode\node_modules\mysql\lib\Connection.js:526:10)
+    at Socket.emit (events.js:400:28)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at Socket.Readable.push (internal/streams/readable.js:204:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
+    at Protocol._enqueue (D:\Source\datamanagersystem\dnode\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+    at Connection.query (D:\Source\datamanagersystem\dnode\node_modules\mysql\lib\Connection.js:198:25)
+    at D:\Source\datamanagersystem\dnode\node_modules\knex\lib\dialects\mysql\index.js:144:18
+From previous event:
+    at Client_MySQL._query (D:\Source\datamanagersystem\dnode\node_modules\knex\lib\dialects\mysql\index.js:135:12)
+    at Client_MySQL.query (D:\Source\datamanagersystem\dnode\node_modules\knex\lib\client.js:192:17)
+    at Runner.<anonymous> (D:\Source\datamanagersystem\dnode\node_modules\knex\lib\runner.js:138:36)
+From previous event:
+    at D:\Source\datamanagersystem\dnode\node_modules\knex\lib\runner.js:47:21
+    at processImmediate (internal/timers.js:464:21)
+From previous event:
+    at Runner.run (D:\Source\datamanagersystem\dnode\node_modules\knex\lib\runner.js:33:30)
+    at Builder.Target.then (D:\Source\datamanagersystem\dnode\node_modules\knex\lib\interface.js:23:43) {
+  code: 'ER_BAD_FIELD_ERROR',
+  errno: 1054,
+  sqlMessage: "Unknown column 'log_code' in 'field list'",
+  sqlState: '42S22',
+  index: 0,
+  sql: "insert into `member_log` (`log_code`, `log_text`, `member_seq`, `used_ipaddress`) values ('1009', 'logout', 1, '127.0.0.1')"
+}
+[2021-09-15T09:40:35.980] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'ollagaza', 1 ],
+  __knexQueryUid: 'c98b56ea-e423-48f7-90ce-aa29a84ae905',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T09:40:35.987] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 09:09:35', 2 ],
+  __knexQueryUid: 'a985adf0-84d2-43b6-a27c-0968cb930e92',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T09:40:35.997] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: '513af3b9-5841-4ff8-81d1-4634387f35e1',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:40:36.015] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: 'c36f879c-e530-4f7d-b088-07881464a768',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:40:38.639] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: '0a897be1-d6e7-41f8-9706-5cb105dc0e35',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:40:47.532] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: 'cdddb7a4-e5ce-4ae8-9a9d-0e048b6bfce6',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T09:40:47.536] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 09:09:47', 1 ],
+  __knexQueryUid: '01a67f30-08ba-4956-8630-9254042c0ec2',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T09:40:47.539] [ERROR] default - /auth/ StdObject {
+  toJSON: [Function (anonymous)],
+  error: -105,
+  message: '현재 사용 중지 중입니다.',
+  variables: {},
+  httpStatusCode: 400,
+  stack: null
+}
+[2021-09-15T09:40:47.542] [ERROR] default - [ POST /apis1/s1/auth ]
+ App {
+  error: -105,
+  message: '현재 사용 중지 중입니다.',
+  variables: {},
+  httpStatusCode: 200
+}
+[2021-09-15T09:40:47.544] [WARN] default - [MySQL]
+ .returning() is not supported by mysql and will not have any effect.
+[2021-09-15T09:40:47.544] [DEBUG] default - [MySQL]
+ {
+  method: 'insert',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [
+    'api',
+    '{"error":-105,"message":"현재 사용 중지 중입니다.","variables":{},"httpStatusCode":200}',
+    '{"user_id":"test","password":"1111"}',
+    'POST',
+    '/apis1/s1/auth'
+  ],
+  __knexQueryUid: 'd97aa2b0-cf14-4cd4-bcdf-b00cfa39d089',
+  sql: 'insert into `service_error` (`error_type`, `message`, `request_body`, `request_method`, `request_url`) values (?, ?, ?, ?, ?)'
+}
+[2021-09-15T09:40:52.773] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'ollagaza', 1 ],
+  __knexQueryUid: '256d2e81-fdf4-4516-b400-df550905fac3',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T09:40:52.776] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 09:09:52', 2 ],
+  __knexQueryUid: 'ac8fb579-7a2c-4eb5-b72b-88a6ebd0fca7',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T09:40:52.788] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: '301ddf3a-35a2-4e0c-b35d-66820d416dd5',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:40:52.800] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: 'aad41568-bd90-44d1-a3f7-6875e9f94299',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:40:52.808] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: '212e05e9-97f7-4a5a-8e55-a84ffb57d0aa',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:40:54.277] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: '9c545dc2-449d-4e06-8878-1123c0bb478b',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:40:54.308] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: 'cf5e1947-f080-42a6-b02f-dfd9fdbc8e71',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T09:40:56.733] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: 'b3520b01-83c5-4435-9096-ed20e508a311',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:41:07.213] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: 'a962fc6b-83e9-48bf-9a57-93294908e071',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:41:11.143] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: 'd1fb3ea1-db7e-47f8-bfa7-727e21198070',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:41:15.744] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: 'a88e6412-a487-4f5d-b22c-e8fb806fb9b6',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T09:41:15.747] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 09:09:15', 1 ],
+  __knexQueryUid: '036699a0-e0bc-4098-975a-747d2fd3f7d0',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T09:41:15.751] [ERROR] default - /auth/ StdObject {
+  toJSON: [Function (anonymous)],
+  error: -105,
+  message: '현재 사용 중지 중입니다.',
+  variables: {},
+  httpStatusCode: 400,
+  stack: null
+}
+[2021-09-15T09:41:15.753] [ERROR] default - [ POST /apis1/s1/auth ]
+ App {
+  error: -105,
+  message: '현재 사용 중지 중입니다.',
+  variables: {},
+  httpStatusCode: 200
+}
+[2021-09-15T09:41:15.756] [WARN] default - [MySQL]
+ .returning() is not supported by mysql and will not have any effect.
+[2021-09-15T09:41:15.756] [DEBUG] default - [MySQL]
+ {
+  method: 'insert',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [
+    'api',
+    '{"error":-105,"message":"현재 사용 중지 중입니다.","variables":{},"httpStatusCode":200}',
+    '{"user_id":"test","password":"1111"}',
+    'POST',
+    '/apis1/s1/auth'
+  ],
+  __knexQueryUid: '75961762-69bb-490d-9e4f-98848734da09',
+  sql: 'insert into `service_error` (`error_type`, `message`, `request_body`, `request_method`, `request_url`) values (?, ?, ?, ?, ?)'
+}
+[2021-09-15T09:41:23.373] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'ollagaza', 1 ],
+  __knexQueryUid: '4985ef6f-a81a-4671-8628-0b3331928cb9',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T09:41:23.375] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 09:09:23', 2 ],
+  __knexQueryUid: '5b942890-7d6a-49d0-b88e-7a70e94994f6',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T09:41:23.387] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: '5aec7e34-5c70-4902-9aaf-9ee6a8cf968c',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:41:23.403] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: 'be67da42-bed6-4bef-90eb-b5412da8da27',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:41:23.411] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: '714a1eed-c3ba-4447-9a09-a0e66dede426',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:41:52.025] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: 'b7eb5b15-c7e5-4f4b-8425-5f4c26de9d07',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:41:55.147] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: '0c3e60c2-f965-4a52-a26c-eced6b3210e7',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T09:42:10.366] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: '09daa2da-7036-41a3-a223-3c0348123d90',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T09:42:39.825] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: 'b05ec875-5a33-46ee-88f1-4f7d87b0067c',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:48:14.755] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: '785831ed-39b7-4ff9-bb33-8a7070793d07',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:48:17.097] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: '03d04a39-7963-455c-bf38-0ac931bcc93f',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:48:19.923] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: '40c977a2-49b8-4326-b85f-f8ec8d6a5c95',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:48:39.191] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: '0844f6d4-4aad-43b5-beff-c65cd08ad49d',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:49:03.013] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '278a0edd-2a8e-43a5-8e36-7c9219e902dc',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T09:49:03.016] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 09:09:03', 1 ],
+  __knexQueryUid: '64c9fc13-e441-4f42-9a8e-294f661e8377',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T09:49:03.028] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '514ecf81-b148-4505-9386-e9cd4e37fe20',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:49:03.044] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '81077c17-6a28-417b-a36a-f82a8942682c',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:49:03.052] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '8293f3d8-d40e-4350-875a-5cbc1d578ff3',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:49:12.404] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '0ff03aeb-6ac7-4d04-8749-52aceef78683',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:49:14.086] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '71e7cab7-ced1-4cd3-b9d0-0075c57ff49a',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:49:45.430] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '697b7d53-3f14-4e6b-bcd3-7584224cef17',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:50:17.117] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '7d39c6f8-20f4-47fb-ab97-09f8d4c5ab43',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:50:18.245] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'c77c5544-11e9-4edf-bf55-ff3805ee8245',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:50:23.571] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: 'a54bc178-b475-495b-8134-4d3c4f991aa3',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T09:50:23.574] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 09:09:23', 1 ],
+  __knexQueryUid: '6fe7d4f6-0d8b-429e-b400-795805d98090',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T09:50:23.587] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '2d03aa52-e3cf-4751-a2d0-6430b00c9d36',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:50:23.605] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '67e1054e-58d3-4127-a289-25b30973e511',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:50:26.545] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'f686209e-39f4-4c55-add4-2dc4768bba63',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:50:28.380] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '9694da6c-ec34-44c0-a2e5-5f32a75d7521',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:50:28.399] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: 'fed76330-44aa-494f-80e6-19cbdb2330f4',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T09:50:35.439] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '5dbede85-7a83-4f86-ae3e-82e7e78bf773',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:50:35.463] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: 'eea5ecbf-04a3-4e90-8ce3-9a1ce286b5b2',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T09:50:39.376] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '843cc147-ec6e-4760-9384-ca4672e47610',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:50:39.437] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: '242af724-dfa9-4963-8a55-2e15ba973e36',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T09:52:28.220] [INFO] default - {
   ENV: 'development',
   IS_RELEASE: false,
   IS_DEV: true,
@@ -78,19 +901,3825 @@
   MYSQL_HOST: null,
   MONGODB_HOST: null
 }
-[2021-09-10T12:17:10.954] [DEBUG] default - add api ./d1/auth.js /d1/auth
-[2021-09-10T12:17:10.956] [DEBUG] default - add api ./d1/test.js /d1/test
-[2021-09-10T12:17:10.958] [DEBUG] default - add api ./d1/users.js /d1/users
-[2021-09-10T12:17:10.983] [DEBUG] default - Listening on port 3600 -> PID: 12016
-[2021-09-10T12:17:10.983] [DEBUG] default - [InitService] init start
-[2021-09-10T12:17:11.042] [DEBUG] default - [MySQL]
+[2021-09-15T09:52:28.674] [DEBUG] default - add api ./d1/auth.js /d1/auth
+[2021-09-15T09:52:28.676] [DEBUG] default - add api ./d1/test.js /d1/test
+[2021-09-15T09:52:28.679] [DEBUG] default - add api ./d1/users.js /d1/users
+[2021-09-15T09:52:28.682] [DEBUG] default - add api ./s1/auth.js /s1/auth
+[2021-09-15T09:52:28.684] [DEBUG] default - add api ./s1/test.js /s1/test
+[2021-09-15T09:52:28.795] [DEBUG] default - add api ./s1/users.js /s1/users
+[2021-09-15T09:52:28.828] [DEBUG] default - Listening on port 3600 -> PID: 20784
+[2021-09-15T09:52:28.829] [DEBUG] default - [InitService] init start
+[2021-09-15T09:52:28.899] [DEBUG] default - [MySQL]
  {
   method: 'select',
   options: {},
   timeout: false,
   cancelOnTimeout: false,
   bindings: [],
-  __knexQueryUid: '2601a9b8-192a-4f2b-bfe8-4c7871ae927a',
+  __knexQueryUid: 'f19040b9-bf26-43f2-96bc-992d6475c6a1',
   sql: 'select * from `service_config`'
 }
-[2021-09-10T12:17:11.047] [DEBUG] default - [InitService] init complete
+[2021-09-15T09:52:28.903] [DEBUG] default - [InitService] init complete
+[2021-09-15T09:52:37.647] [INFO] default - {
+  ENV: 'development',
+  IS_RELEASE: false,
+  IS_DEV: true,
+  IS_LOCAL: false,
+  IS_DEMON: false,
+  PRINT_DB_LOG: true,
+  LOG_PATH: 'logs',
+  MYSQL_HOST: null,
+  MONGODB_HOST: null
+}
+[2021-09-15T09:52:38.256] [DEBUG] default - add api ./d1/auth.js /d1/auth
+[2021-09-15T09:52:38.260] [DEBUG] default - add api ./d1/test.js /d1/test
+[2021-09-15T09:52:38.262] [DEBUG] default - add api ./d1/users.js /d1/users
+[2021-09-15T09:52:38.265] [DEBUG] default - add api ./s1/auth.js /s1/auth
+[2021-09-15T09:52:38.267] [DEBUG] default - add api ./s1/test.js /s1/test
+[2021-09-15T09:52:38.270] [DEBUG] default - add api ./s1/users.js /s1/users
+[2021-09-15T09:52:38.300] [DEBUG] default - Listening on port 3600 -> PID: 20972
+[2021-09-15T09:52:38.301] [DEBUG] default - [InitService] init start
+[2021-09-15T09:52:38.359] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [],
+  __knexQueryUid: '54d7ce5a-7c6b-459c-9a23-af4c972f93d6',
+  sql: 'select * from `service_config`'
+}
+[2021-09-15T09:52:38.363] [DEBUG] default - [InitService] init complete
+[2021-09-15T09:53:28.881] [INFO] default - {
+  ENV: 'development',
+  IS_RELEASE: false,
+  IS_DEV: true,
+  IS_LOCAL: false,
+  IS_DEMON: false,
+  PRINT_DB_LOG: true,
+  LOG_PATH: 'logs',
+  MYSQL_HOST: null,
+  MONGODB_HOST: null
+}
+[2021-09-15T09:53:29.517] [DEBUG] default - add api ./d1/auth.js /d1/auth
+[2021-09-15T09:53:29.523] [DEBUG] default - add api ./d1/test.js /d1/test
+[2021-09-15T09:53:29.525] [DEBUG] default - add api ./d1/users.js /d1/users
+[2021-09-15T09:53:29.528] [DEBUG] default - add api ./s1/auth.js /s1/auth
+[2021-09-15T09:53:29.530] [DEBUG] default - add api ./s1/test.js /s1/test
+[2021-09-15T09:53:29.532] [DEBUG] default - add api ./s1/users.js /s1/users
+[2021-09-15T09:53:29.572] [DEBUG] default - Listening on port 3600 -> PID: 21680
+[2021-09-15T09:53:29.573] [DEBUG] default - [InitService] init start
+[2021-09-15T09:53:29.641] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [],
+  __knexQueryUid: '0120d099-56af-41e3-b2e5-3029c086ef28',
+  sql: 'select * from `service_config`'
+}
+[2021-09-15T09:53:29.645] [DEBUG] default - [InitService] init complete
+[2021-09-15T09:53:36.678] [INFO] default - {
+  ENV: 'development',
+  IS_RELEASE: false,
+  IS_DEV: true,
+  IS_LOCAL: false,
+  IS_DEMON: false,
+  PRINT_DB_LOG: true,
+  LOG_PATH: 'logs',
+  MYSQL_HOST: null,
+  MONGODB_HOST: null
+}
+[2021-09-15T09:53:37.283] [DEBUG] default - add api ./d1/auth.js /d1/auth
+[2021-09-15T09:53:37.285] [DEBUG] default - add api ./d1/test.js /d1/test
+[2021-09-15T09:53:37.287] [DEBUG] default - add api ./d1/users.js /d1/users
+[2021-09-15T09:53:37.291] [DEBUG] default - add api ./s1/auth.js /s1/auth
+[2021-09-15T09:53:37.293] [DEBUG] default - add api ./s1/test.js /s1/test
+[2021-09-15T09:53:37.296] [DEBUG] default - add api ./s1/users.js /s1/users
+[2021-09-15T09:53:37.325] [DEBUG] default - Listening on port 3600 -> PID: 12968
+[2021-09-15T09:53:37.325] [DEBUG] default - [InitService] init start
+[2021-09-15T09:53:37.380] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [],
+  __knexQueryUid: '433256ab-094e-4d92-bfc3-4e45b1f89f8c',
+  sql: 'select * from `service_config`'
+}
+[2021-09-15T09:53:37.384] [DEBUG] default - [InitService] init complete
+[2021-09-15T09:53:39.273] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'a8a86aa3-8f64-429c-badc-416877fc06cf',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:53:39.305] [ERROR] default - [ GET /apis1/s1/users/list?page=1&is_used=&search_type=user_name&keyword= ]
+ 요청하신 API Endpoint가 존재하지 않습니다.
+[2021-09-15T09:53:39.306] [ERROR] default - [ GET /apis1/s1/users/list?page=1&is_used=&search_type=user_name&keyword= ]
+ App {
+  error: -1,
+  message: '요청하신 API Endpoint가 존재하지 않습니다.',
+  variables: {},
+  httpStatusCode: 404
+}
+[2021-09-15T09:53:42.868] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '24f825fa-1090-4315-b7f1-2978a30eeeee',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T09:53:42.873] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 09:09:42', 1 ],
+  __knexQueryUid: 'c406f6d9-cd98-4475-80b6-e519486dd159',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T09:53:42.885] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'eb753e79-7eab-4c89-97e2-4c8bf5dfb8b4',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:53:42.901] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '91d414e4-0d2b-467c-b251-c5d556a6495d',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:53:42.910] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'acdad48a-eddc-45bd-acfc-e7b8a07a7d00',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:54:59.525] [INFO] default - {
+  ENV: 'development',
+  IS_RELEASE: false,
+  IS_DEV: true,
+  IS_LOCAL: false,
+  IS_DEMON: false,
+  PRINT_DB_LOG: true,
+  LOG_PATH: 'logs',
+  MYSQL_HOST: null,
+  MONGODB_HOST: null
+}
+[2021-09-15T09:55:00.212] [DEBUG] default - add api ./d1/auth.js /d1/auth
+[2021-09-15T09:55:00.215] [DEBUG] default - add api ./d1/test.js /d1/test
+[2021-09-15T09:55:00.217] [DEBUG] default - add api ./d1/users.js /d1/users
+[2021-09-15T09:55:00.221] [DEBUG] default - add api ./s1/auth.js /s1/auth
+[2021-09-15T09:55:00.223] [DEBUG] default - add api ./s1/test.js /s1/test
+[2021-09-15T09:55:00.225] [DEBUG] default - add api ./s1/users.js /s1/users
+[2021-09-15T09:55:00.257] [DEBUG] default - Listening on port 3600 -> PID: 9476
+[2021-09-15T09:55:00.257] [DEBUG] default - [InitService] init start
+[2021-09-15T09:55:00.315] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [],
+  __knexQueryUid: '76b97cef-ce0f-4ba5-8c38-6d3535b15106',
+  sql: 'select * from `service_config`'
+}
+[2021-09-15T09:55:00.319] [DEBUG] default - [InitService] init complete
+[2021-09-15T09:55:01.122] [INFO] default - {
+  ENV: 'development',
+  IS_RELEASE: false,
+  IS_DEV: true,
+  IS_LOCAL: false,
+  IS_DEMON: false,
+  PRINT_DB_LOG: true,
+  LOG_PATH: 'logs',
+  MYSQL_HOST: null,
+  MONGODB_HOST: null
+}
+[2021-09-15T09:55:01.734] [DEBUG] default - add api ./d1/auth.js /d1/auth
+[2021-09-15T09:55:01.738] [DEBUG] default - add api ./d1/test.js /d1/test
+[2021-09-15T09:55:01.740] [DEBUG] default - add api ./d1/users.js /d1/users
+[2021-09-15T09:55:01.743] [DEBUG] default - add api ./s1/auth.js /s1/auth
+[2021-09-15T09:55:01.745] [DEBUG] default - add api ./s1/test.js /s1/test
+[2021-09-15T09:55:01.748] [DEBUG] default - add api ./s1/users.js /s1/users
+[2021-09-15T09:55:01.779] [DEBUG] default - Listening on port 3600 -> PID: 2544
+[2021-09-15T09:55:01.779] [DEBUG] default - [InitService] init start
+[2021-09-15T09:55:01.835] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [],
+  __knexQueryUid: 'a577a102-109f-4ddb-83f0-8c43018cf03d',
+  sql: 'select * from `service_config`'
+}
+[2021-09-15T09:55:01.839] [DEBUG] default - [InitService] init complete
+[2021-09-15T09:55:03.527] [INFO] default - {
+  ENV: 'development',
+  IS_RELEASE: false,
+  IS_DEV: true,
+  IS_LOCAL: false,
+  IS_DEMON: false,
+  PRINT_DB_LOG: true,
+  LOG_PATH: 'logs',
+  MYSQL_HOST: null,
+  MONGODB_HOST: null
+}
+[2021-09-15T09:55:03.979] [DEBUG] default - add api ./d1/auth.js /d1/auth
+[2021-09-15T09:55:03.981] [DEBUG] default - add api ./d1/test.js /d1/test
+[2021-09-15T09:55:03.983] [DEBUG] default - add api ./d1/users.js /d1/users
+[2021-09-15T09:55:03.985] [DEBUG] default - add api ./s1/auth.js /s1/auth
+[2021-09-15T09:55:03.987] [DEBUG] default - add api ./s1/test.js /s1/test
+[2021-09-15T09:55:04.088] [DEBUG] default - add api ./s1/users.js /s1/users
+[2021-09-15T09:55:04.116] [DEBUG] default - Listening on port 3600 -> PID: 16780
+[2021-09-15T09:55:04.116] [DEBUG] default - [InitService] init start
+[2021-09-15T09:55:04.172] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [],
+  __knexQueryUid: '8af2d8f8-db6c-4101-aebe-991fda3dc928',
+  sql: 'select * from `service_config`'
+}
+[2021-09-15T09:55:04.176] [DEBUG] default - [InitService] init complete
+[2021-09-15T09:55:05.878] [INFO] default - {
+  ENV: 'development',
+  IS_RELEASE: false,
+  IS_DEV: true,
+  IS_LOCAL: false,
+  IS_DEMON: false,
+  PRINT_DB_LOG: true,
+  LOG_PATH: 'logs',
+  MYSQL_HOST: null,
+  MONGODB_HOST: null
+}
+[2021-09-15T09:55:06.345] [DEBUG] default - add api ./d1/auth.js /d1/auth
+[2021-09-15T09:55:06.347] [DEBUG] default - add api ./d1/test.js /d1/test
+[2021-09-15T09:55:06.349] [DEBUG] default - add api ./d1/users.js /d1/users
+[2021-09-15T09:55:06.351] [DEBUG] default - add api ./s1/auth.js /s1/auth
+[2021-09-15T09:55:06.352] [DEBUG] default - add api ./s1/test.js /s1/test
+[2021-09-15T09:55:06.456] [DEBUG] default - add api ./s1/users.js /s1/users
+[2021-09-15T09:55:06.483] [DEBUG] default - Listening on port 3600 -> PID: 5340
+[2021-09-15T09:55:06.484] [DEBUG] default - [InitService] init start
+[2021-09-15T09:55:06.540] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [],
+  __knexQueryUid: 'd9343096-c31b-41e1-90a6-4a7678dd80f8',
+  sql: 'select * from `service_config`'
+}
+[2021-09-15T09:55:06.544] [DEBUG] default - [InitService] init complete
+[2021-09-15T09:55:11.197] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '5f22d1bb-5aa5-4781-8d9c-598472aad840',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:55:16.179] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: 'a79111d3-2c6f-4cb1-bbfe-84f0d53ed8e2',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T09:55:16.185] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 09:09:16', 1 ],
+  __knexQueryUid: '73f9975d-14dc-4d01-9568-6e6e52f9e5b8',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T09:55:16.199] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '4a9c0829-eec6-4f92-a624-4e0d78522215',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:55:16.215] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '14ab4b7b-02d2-4397-bf13-81fdff6f0b4f',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:55:16.224] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'ca2e67b9-29c3-4c1d-a038-12057775b67b',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:56:55.964] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '577ac6ae-7037-4ee7-a679-7dafbf218e43',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:58:34.883] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'bb64eb4d-8414-4d9b-8c71-0d64f7a5c156',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:58:36.580] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'dc6b4fa7-65a0-4b94-8146-4a603fc288a7',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:58:38.929] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: 'f3785977-e060-431c-b3a6-ce6f723ff1cb',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T09:58:38.933] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 09:09:38', 1 ],
+  __knexQueryUid: '17eeb675-220c-44cc-948e-c5f8e164392d',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T09:58:38.946] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '5ecc584d-8662-4568-87c7-5c28af8652a7',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:58:38.961] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '3dc9b155-9b7f-4b60-9c94-eb63c50e3bd0',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:58:38.969] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '401d9134-dab3-40cc-b475-6759c639e8b5',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:59:08.096] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '21c18910-770b-4da3-9c5c-9429404b27d5',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T09:59:08.099] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 09:09:08', 1 ],
+  __knexQueryUid: '84268d42-9cf5-4900-9615-d5fa4bdf30a7',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T09:59:08.110] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'a744d8f5-3ac6-49b8-98ea-7b52de3e8f46',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:59:08.122] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '08b2c78f-afff-49d4-acf9-aac6d8f3112b',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:59:08.129] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'fb8f31aa-f3df-49f3-80ce-8df9efee9b6f',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:59:09.945] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'df306f87-7583-46b7-bfd5-604640b29b0b',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:59:11.247] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '0199817c-73b0-4128-a372-5bd5108ad1e1',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:59:15.087] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'b0ea1bd5-3697-4f5e-bcb4-f9e15abe5ea5',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:59:18.167] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'a78b2d1e-73f6-48b8-9c6a-68e62c7090fa',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:59:19.468] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '5adedc51-2022-4418-9394-65903d358715',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:59:21.515] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'fbc0b5e1-8ad3-416e-af24-55523c783822',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:59:23.499] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '1ca62205-a6b5-4a05-82e7-eaf328cced75',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:59:26.815] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '29e2f4b1-0212-4e14-9306-9503609da12e',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T09:59:28.140] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '8fa7f8a7-c9be-4da1-89e3-e5e8db132570',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:00:38.605] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '2c294bc8-d858-4c87-a167-6a0398722c84',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:00:38.685] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'ae561a6c-3a4a-410f-bf86-796df434cab3',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:00:40.915] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '1c8b7f4b-b883-4a12-b7c9-e4771c339293',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:00:50.743] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '9d945f6e-1768-4c64-b65f-64b8c202036b',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:00:50.800] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '6e73faae-9c6f-4d4a-a871-c25d225a0e63',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:00:52.531] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '3f4ae79c-2fd1-43eb-bda7-ca3849d1df12',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:00:55.913] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'd77facce-63d8-4f6c-82d4-62c0346d4fcc',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:00:56.030] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '087a9656-3275-4552-a46e-42094c28d846',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:01:10.459] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '3d70c39d-fc62-447c-a765-09dea7bbe74c',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:01:10.530] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'c6f374f8-50eb-464d-845a-538404580e76',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:01:11.921] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '6c216f18-972a-4d64-b2cd-63ad0696f9af',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:01:42.366] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '772d27ef-ca6d-4a1d-a521-74d7ab98ddee',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:01:42.427] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '9e22265e-e54f-4d4c-a5bc-5fa3dea2f57c',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:02:26.430] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: '4105246f-ee6d-4b77-9e4c-ad0b6f5677b5',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:02:50.812] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'cfed20fe-3e04-4cee-a88c-c00635127934',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:02:50.860] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '67a0c500-6e0c-4de4-b270-b94ff51e33a6',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:02:53.541] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '22c920f8-53b9-4967-8fa5-1c04155dde90',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:02:53.570] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'f0e213d0-2e6f-489d-8f87-8ca371528324',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:02:56.298] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '814613c3-2654-48de-8778-2e1b3e6c4ec6',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:02:59.191] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '2fe543ef-1a01-475c-ad05-652ff1b4a74d',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T10:02:59.194] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 10:09:59', 1 ],
+  __knexQueryUid: '81d8179f-dd54-4105-bc07-a8bbcc9a5319',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T10:02:59.205] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '705f951f-e077-49d5-b6e3-ad1b8ca931d3',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:02:59.217] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'df18e56a-3620-47c7-b5ae-444c89da07ad',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:02:59.223] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '6a564b86-9655-4400-9869-47000de20d39',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:03:00.553] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'ad261e90-a9e7-4f43-80fa-2487ce04414d',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:03:05.105] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '2871232c-0e73-4191-9b20-8151e1c88a25',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:03:05.177] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '01c0d4c6-dc2d-452f-8478-ffb87e838898',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:03:17.522] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '35839cda-510d-4207-8d65-b15677cb5c0d',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:03:17.594] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'b74544c6-5cce-4473-8c5b-f8a49532bbfc',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:03:46.127] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '115f8a4a-701f-44cf-a274-adf4faf14c1a',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T10:03:46.130] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 10:09:46', 1 ],
+  __knexQueryUid: 'ef0a4704-c18e-4982-9056-dfe36cae3beb',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T10:03:46.141] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'f4677b79-0b7e-4c21-adfe-43bdbea82eb1',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:03:46.155] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '79cef5e5-ec2b-4a2b-b0e9-193fec7c88d5',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:03:46.163] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '89f81687-4b95-4651-a4a1-3696dabcdd2c',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:06:28.880] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: 'b3c60023-fa36-45da-af88-68d41d541dec',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T10:07:45.827] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'ollagaza', 1 ],
+  __knexQueryUid: '70ee14c1-4dc4-411b-a885-a2927f8d3b00',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T10:07:45.830] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 10:09:45', 2 ],
+  __knexQueryUid: 'f5d493e5-8f10-4b49-a6a5-1fdf2b953361',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T10:14:47.490] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '49031120-4c1e-403c-bd0e-85168ed2548c',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:14:47.546] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'dd4e7a87-c5c6-4ba0-a72e-327dd1648602',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:14:48.519] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'f8a4ae73-c9ca-46d3-af0a-6a9e37df20cc',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:14:48.592] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '8429b6ff-a49e-47be-add9-2b9b41921683',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:14:52.886] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '3efd82e3-3643-466e-9c54-797c561fe02b',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:15:01.340] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: 'e1d76434-0900-420e-b066-77560839dcaa',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T10:15:01.342] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 10:09:01', 1 ],
+  __knexQueryUid: '67f7b859-fa7e-4964-9920-f095f78b1f90',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T10:15:01.353] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '2b229b8d-0406-4914-b85d-f0e25a48d022',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:15:01.366] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '6e7f34e0-e237-4986-afe6-c7cf72ba64d3',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:15:01.374] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'de4b69a5-3715-418b-bb05-e839e0269882',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:15:02.639] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'e15dc90d-7886-4054-aaa3-6fe21f4f9b9a',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:15:18.769] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '61b353c9-1edc-4759-9df8-504aecbc639b',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:15:18.849] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '29d27e5c-2bc9-47d0-a9fd-c3876f096919',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:15:22.546] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '854e053e-a398-48e7-922d-6f1d95adce22',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:15:22.590] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'c6a5154c-b14a-434d-b2b4-f1bc1f0e1ea8',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:17:51.303] [ERROR] default - [ GET /apis1/s1/d2/users/1/data ]
+ 요청하신 API Endpoint가 존재하지 않습니다.
+[2021-09-15T10:17:51.303] [ERROR] default - [ GET /apis1/s1/d2/users/1/data ]
+ App {
+  error: -1,
+  message: '요청하신 API Endpoint가 존재하지 않습니다.',
+  variables: {},
+  httpStatusCode: 404
+}
+[2021-09-15T10:18:20.980] [ERROR] default - [ GET /apis1/s1/d2/1/data ]
+ 요청하신 API Endpoint가 존재하지 않습니다.
+[2021-09-15T10:18:20.981] [ERROR] default - [ GET /apis1/s1/d2/1/data ]
+ App {
+  error: -1,
+  message: '요청하신 API Endpoint가 존재하지 않습니다.',
+  variables: {},
+  httpStatusCode: 404
+}
+[2021-09-15T10:18:25.571] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: '281d609b-4d90-4962-95b4-d5aa13555ab4',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T10:18:28.124] [ERROR] default - [ GET /apis1/s1/d2/users/1/data ]
+ 요청하신 API Endpoint가 존재하지 않습니다.
+[2021-09-15T10:18:28.124] [ERROR] default - [ GET /apis1/s1/d2/users/1/data ]
+ App {
+  error: -1,
+  message: '요청하신 API Endpoint가 존재하지 않습니다.',
+  variables: {},
+  httpStatusCode: 404
+}
+[2021-09-15T10:20:10.996] [INFO] default - {
+  ENV: 'development',
+  IS_RELEASE: false,
+  IS_DEV: true,
+  IS_LOCAL: false,
+  IS_DEMON: false,
+  PRINT_DB_LOG: true,
+  LOG_PATH: 'logs',
+  MYSQL_HOST: null,
+  MONGODB_HOST: null
+}
+[2021-09-15T10:20:11.463] [DEBUG] default - add api ./d1/auth.js /d1/auth
+[2021-09-15T10:20:11.465] [DEBUG] default - add api ./d1/test.js /d1/test
+[2021-09-15T10:20:11.467] [DEBUG] default - add api ./d1/users.js /d1/users
+[2021-09-15T10:20:11.469] [DEBUG] default - add api ./s1/auth.js /s1/auth
+[2021-09-15T10:20:11.471] [DEBUG] default - add api ./s1/test.js /s1/test
+[2021-09-15T10:20:11.574] [DEBUG] default - add api ./s1/users.js /s1/users
+[2021-09-15T10:20:11.605] [DEBUG] default - Listening on port 3600 -> PID: 3024
+[2021-09-15T10:20:11.605] [DEBUG] default - [InitService] init start
+[2021-09-15T10:20:11.665] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [],
+  __knexQueryUid: '5cae2e99-0d5b-45ed-a433-64f2edec85fc',
+  sql: 'select * from `service_config`'
+}
+[2021-09-15T10:20:11.669] [DEBUG] default - [InitService] init complete
+[2021-09-15T10:20:13.796] [INFO] default - {
+  ENV: 'development',
+  IS_RELEASE: false,
+  IS_DEV: true,
+  IS_LOCAL: false,
+  IS_DEMON: false,
+  PRINT_DB_LOG: true,
+  LOG_PATH: 'logs',
+  MYSQL_HOST: null,
+  MONGODB_HOST: null
+}
+[2021-09-15T10:20:14.264] [DEBUG] default - add api ./d1/auth.js /d1/auth
+[2021-09-15T10:20:14.266] [DEBUG] default - add api ./d1/test.js /d1/test
+[2021-09-15T10:20:14.268] [DEBUG] default - add api ./d1/users.js /d1/users
+[2021-09-15T10:20:14.271] [DEBUG] default - add api ./s1/auth.js /s1/auth
+[2021-09-15T10:20:14.273] [DEBUG] default - add api ./s1/test.js /s1/test
+[2021-09-15T10:20:14.379] [DEBUG] default - add api ./s1/users.js /s1/users
+[2021-09-15T10:20:14.408] [DEBUG] default - Listening on port 3600 -> PID: 19412
+[2021-09-15T10:20:14.409] [DEBUG] default - [InitService] init start
+[2021-09-15T10:20:14.465] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [],
+  __knexQueryUid: '703a737d-c8a4-4c2e-b144-9268c4273136',
+  sql: 'select * from `service_config`'
+}
+[2021-09-15T10:20:14.469] [DEBUG] default - [InitService] init complete
+[2021-09-15T10:20:16.100] [ERROR] default - [ GET /apis1/s1/d2/users/1/data ]
+ 요청하신 API Endpoint가 존재하지 않습니다.
+[2021-09-15T10:20:16.101] [ERROR] default - [ GET /apis1/s1/d2/users/1/data ]
+ App {
+  error: -1,
+  message: '요청하신 API Endpoint가 존재하지 않습니다.',
+  variables: {},
+  httpStatusCode: 404
+}
+[2021-09-15T10:20:16.766] [ERROR] default - [ GET /apis1/s1/d2/users/1/data ]
+ 요청하신 API Endpoint가 존재하지 않습니다.
+[2021-09-15T10:20:16.767] [ERROR] default - [ GET /apis1/s1/d2/users/1/data ]
+ App {
+  error: -1,
+  message: '요청하신 API Endpoint가 존재하지 않습니다.',
+  variables: {},
+  httpStatusCode: 404
+}
+[2021-09-15T10:20:17.613] [ERROR] default - [ GET /apis1/s1/d2/users/1/data ]
+ 요청하신 API Endpoint가 존재하지 않습니다.
+[2021-09-15T10:20:17.614] [ERROR] default - [ GET /apis1/s1/d2/users/1/data ]
+ App {
+  error: -1,
+  message: '요청하신 API Endpoint가 존재하지 않습니다.',
+  variables: {},
+  httpStatusCode: 404
+}
+[2021-09-15T10:21:42.366] [INFO] default - {
+  ENV: 'development',
+  IS_RELEASE: false,
+  IS_DEV: true,
+  IS_LOCAL: false,
+  IS_DEMON: false,
+  PRINT_DB_LOG: true,
+  LOG_PATH: 'logs',
+  MYSQL_HOST: null,
+  MONGODB_HOST: null
+}
+[2021-09-15T10:21:42.821] [DEBUG] default - add api ./d1/auth.js /d1/auth
+[2021-09-15T10:21:42.823] [DEBUG] default - add api ./d1/test.js /d1/test
+[2021-09-15T10:21:42.825] [DEBUG] default - add api ./d1/users.js /d1/users
+[2021-09-15T10:21:42.827] [DEBUG] default - add api ./s1/auth.js /s1/auth
+[2021-09-15T10:21:42.829] [DEBUG] default - add api ./s1/test.js /s1/test
+[2021-09-15T10:21:42.930] [DEBUG] default - add api ./s1/users.js /s1/users
+[2021-09-15T10:21:42.959] [DEBUG] default - Listening on port 3600 -> PID: 2992
+[2021-09-15T10:21:42.960] [DEBUG] default - [InitService] init start
+[2021-09-15T10:21:43.015] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [],
+  __knexQueryUid: '19cd5077-a33a-424e-a254-81430bd7a855',
+  sql: 'select * from `service_config`'
+}
+[2021-09-15T10:21:43.020] [DEBUG] default - [InitService] init complete
+[2021-09-15T10:24:36.966] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '33fb17bd-f7b5-4f67-9a88-a9bbf022b558',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:24:36.976] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'c224d8b9-bd41-403f-bd33-db1448a56237',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:25:22.119] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '533fa2ec-c7e5-40e1-8245-328635e9cc71',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:25:24.955] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '07381422-1d3d-4ab6-8342-d8c8f1bf3f43',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T10:25:24.961] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 10:09:24', 1 ],
+  __knexQueryUid: '45ec8360-7c8e-476b-9350-f2b10aa13217',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T10:25:24.974] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '238829a6-f2b2-4b46-9fdc-14fd050feac9',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:25:24.989] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'f838038b-0738-48e4-801d-57d5c02e2927',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:25:25.002] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '565f883e-2d03-42b4-9511-072bac1013f2',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:26:24.828] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '60f8e85d-8c22-4324-92bf-e389ad59194d',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:26:28.469] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'b749e152-31f0-463c-9c32-8f4af36dff07',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:26:59.543] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'cfcd83ee-1982-4138-a4f1-4207c0af1c5c',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:27:12.288] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '855939f3-6bfa-4254-ae9a-6e2384c3257c',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:27:12.988] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'c49008a9-5354-40cf-9162-49837f064659',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:27:15.771] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: 'd4ac50b7-1f36-47b4-ad14-467da1390558',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T10:27:15.775] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 10:09:15', 1 ],
+  __knexQueryUid: 'd488e212-3534-4c2b-8662-6256a03ec62f',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T10:27:15.787] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'ffac082c-5105-4cf8-ae5a-0c73515d6a8e',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:27:15.801] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '08ff578d-c84e-4973-be1f-427c1928aa52',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:27:15.811] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '5ed3e466-81e8-47ce-bef3-a32ecbd0e833',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:27:18.259] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '1dc8d11c-54fe-46d3-b17d-84e52fbbe0aa',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:27:24.557] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'a6a8a263-5d56-4d93-93ff-5cad53e9ee56',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:27:25.202] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '76af4e95-e9cd-43db-8e75-6de219bb4212',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:27:26.634] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '184efd0b-d5d8-459c-a416-d845d888c854',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:27:27.657] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'c0015cde-685f-42c8-918d-e102d775f361',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:27:27.678] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: '758fc81d-c8be-43c8-b63e-453d21db32c4',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T10:27:30.632] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '5cfafc3c-3e80-4df9-9b0d-f80c846a965f',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T10:27:30.636] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 10:09:30', 1 ],
+  __knexQueryUid: 'c176f12c-cec5-417f-bcde-28cb542e1fb6',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T10:27:30.653] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '849c4419-0fea-4350-8aef-dd6a24fd721d',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:27:30.681] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '2d12dc91-48eb-4413-a1c9-3d1aebd45ff7',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:27:46.619] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '762086a8-0fbe-4f11-a07d-cc52a8926bc0',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:27:46.951] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'e1409901-19fa-4a5f-9489-b7c74b0db923',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:27:48.073] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '67b7d39b-11fb-4e5b-be3f-a4dbfea849f2',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:27:48.091] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: 'f36e0bed-2519-4df6-9cde-b5e29c5de0b4',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T10:27:50.528] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: 'bcabdaaf-a1cc-450b-b90a-c6dace6c6e78',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T10:27:50.531] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 10:09:50', 1 ],
+  __knexQueryUid: '9b96704a-bbe4-463c-9c70-7bb9b55ffef3',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T10:27:50.542] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '963b9313-b384-45ef-94a2-96d21c542fe3',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:27:56.612] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'e3e15db1-e52a-434e-9110-d1f1c0ed369c',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:27:56.639] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: '4338c5f3-fda1-4454-9ef1-b2a33b9314ee',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T10:27:57.993] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '1573f54a-02a7-4bdf-8e63-7bdbb2b67f5b',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:27:58.020] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: '6a2c3176-ea87-4c3a-920c-929f0cd79b9b',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T10:28:02.995] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '42d5c2d4-5531-4d5d-89e9-e515c62ef4a4',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:28:03.023] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: 'b5a1204b-9497-4ad4-802c-66941b277ab3',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T10:28:31.565] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '13eeb018-2da7-4274-a8c3-90773fc56e29',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:28:31.611] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: 'ecbfa930-ebab-41aa-a72c-9ff09fe5c5c1',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T10:28:33.178] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'c9557bb3-aef7-4262-a4c1-91b358e5d9f0',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:28:33.243] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: '8faa7864-9843-4c39-8a0a-5ab03ae842a2',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T10:28:36.049] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: 'b78cad75-2455-42ab-a2f8-f3e187534812',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T10:28:36.051] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 10:09:36', 1 ],
+  __knexQueryUid: '63bf0da6-00fb-4a85-adf3-194f39d25cfb',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T10:28:36.064] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '88bd2bdf-730a-426a-8ecc-124d323d21d8',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:28:36.084] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'f8377ff5-2112-4745-acc0-1e18189c9fbb',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:28:43.704] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'd8be6b20-b2e6-4d3a-ad03-a78ca78a3d53',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:28:43.724] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: '2a1c297d-98be-4852-b7f6-a8e794303417',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T10:28:44.641] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '16f1db9e-a5ca-4f6d-8c46-3d28128ecd45',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:28:44.670] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: 'd6eb40b0-3086-440b-81f5-edf325c1ade8',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T10:28:52.141] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '780b2e61-ca27-4f01-bcf4-1c4be013b023',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:28:52.170] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: 'ee5c128b-c739-436d-b60f-1d2f4eae0e19',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T10:28:56.013] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'fbddcf40-3808-4c92-a909-0fb25f5609da',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:28:56.046] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: '1bd95042-b52e-428a-87ed-73c40a01e6c3',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T10:28:58.504] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: 'f1f3a501-3dff-464b-8648-011acb4bfb66',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T10:28:58.507] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 10:09:58', 1 ],
+  __knexQueryUid: 'ea14529a-1e32-454a-8bfa-840d421c1243',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T10:28:58.520] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '04772a29-9596-407d-a12a-ae6a13ae985d',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:28:58.534] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '17326293-eacf-48a4-8411-ea0b7be5cf01',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:28:58.543] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '4b8f394a-51c6-44eb-8bb6-959d28d17676',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:29:00.590] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'f0e3783e-a944-4d39-987b-800a7b9045dc',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:29:07.303] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '6ed4dc4f-9ea3-4cb0-bc0f-90640679bbd5',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:29:07.636] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '3aa7d7f8-0c89-48f6-90fc-228b81c4388f',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:29:10.064] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '7fc8dd2b-40bd-4e68-ac95-547a250e2972',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T10:29:10.067] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 10:09:10', 1 ],
+  __knexQueryUid: '189d1f58-662a-4ae3-95f6-6fdef0841d7d',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T10:29:10.078] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '664a9e89-4eca-42de-b853-5c7efad7098b',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:29:10.091] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'ffa91e31-1e7a-49f5-b0cc-a2a51f135a85',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:29:10.100] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '8ccf99de-86ce-44a4-94bb-9924d549b563',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:29:12.404] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '9f9c5b6e-5763-4474-a5b4-f4908959b284',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:29:13.166] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '60fd12b9-a065-44ef-bea5-809d9777f42c',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:29:13.474] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'bd81453a-a232-42c5-844c-d76f39802026',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:29:13.799] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '9d7cc4ec-10b9-4664-97e4-66c61438cca6',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:23.764] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '529d8a0c-3f33-4669-aa40-94bb9c4a7864',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:29.999] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '365cb6e4-543e-43c6-a9ba-835ebadba1d3',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:32.969] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '4f3ae62a-b1f9-4208-b719-1cf4a763b6fa',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T10:30:32.972] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 10:09:32', 1 ],
+  __knexQueryUid: '1f00699d-1f7a-4b4d-bddd-edeeaf99a3bd',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T10:30:32.986] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '80f6ca5e-1fb3-4d7a-880b-689825d5e1fd',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:32.999] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '6277f243-eed9-42b2-bf12-ede230859e9f',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:33.008] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'f3f6e2d2-10c6-4f55-8c4f-42531423fdd1',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:38.325] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '84f3b6f2-faa3-4108-b011-796940336dd1',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:38.898] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '3976161e-0e59-4b5f-a06a-3e1c50660b4d',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:39.210] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'b253489b-c8a6-43d5-a796-8e4ec4ef53f0',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:39.510] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'd98ecad9-1bb2-40e1-95cd-3992196848b4',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:39.842] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'a0955ae3-ff85-44da-b2b1-72373fe9b15c',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:40.124] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '5442eb1f-e67b-4994-96da-3155e374bc60',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:40.833] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '1b9788b8-d65c-4d62-9d26-5c88298dd453',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:40.857] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: '765cabf5-cd70-4621-bf82-49d95b7cd173',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T10:30:41.840] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '00924479-4f9b-445e-9fed-5845734e8d1d',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:42.917] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'd3d9d1ab-deb2-4a23-81c2-b2da3fb84c81',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:43.208] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '6d58a49d-8722-4fc4-9b79-5295b48bae18',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:43.508] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'add57ff3-7873-4f16-bc14-00c3bf911d2e',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:43.842] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'a85b1c4b-42e5-48c2-a698-9bb1aa4e573b',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:48.737] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '5fe0355f-5ad1-4993-931a-9aa9adfb7ee6',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:49.682] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '1b5e7c2d-03fa-496c-922f-b60ac52e74f5',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:52.680] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: 'e44cbcb4-e276-405d-8809-c30a19971ca4',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T10:30:52.683] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 10:09:52', 1 ],
+  __knexQueryUid: '5b65222a-d522-4b04-957b-c404256ad94d',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T10:30:52.696] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'ee7c794f-3127-419a-9f71-c1a197055f4f',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:52.709] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'ca286abd-7968-43ca-9d8a-2069e4188a90',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:52.717] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '026a235c-467c-4d9d-81f0-573d6bde52a9',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:56.512] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '72b5bc01-6cf6-4b79-9651-ad296dd79361',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:30:59.226] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '591d0a5e-5cc0-4237-b49e-9b2eed1e4886',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:31:05.360] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'b453c2bd-f484-428e-b428-5f22cde9fcb7',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:31:10.394] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '2695038c-ef99-4198-a5b4-c9c3f289b25c',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:31:13.537] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '07f798f4-66c1-4384-8fae-15307bff707c',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:31:15.360] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '6a7c5b12-fc41-4384-9a4f-2ecd4097f44c',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:31:16.264] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '75c08edd-4e9d-4351-b933-3d66dad78e68',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:33:06.868] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '14e6b3ae-8ad9-4e17-8196-7d8245453c80',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:33:07.935] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '0a6ea45a-7eb4-445f-ba25-15ef2564d191',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:33:10.559] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '4fc576f8-d738-4fee-a189-2e4158b52e15',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T10:33:10.562] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 10:09:10', 1 ],
+  __knexQueryUid: '00004f9f-ee0b-4aeb-9ea0-8cd7335d79e4',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T10:33:10.574] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'bbb71272-fc98-4371-940d-b11292bebbc4',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:33:10.588] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'd0280b0a-fc28-4001-bd30-0772c63fceb5',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:33:10.597] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'da00989b-591c-4d5a-991a-44c8623505c0',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:34:34.043] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '4f472d65-946f-4391-920d-72f22bd734d7',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:34:42.403] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '15c1205a-aa80-4dc4-9a9a-9e40c9dd3f65',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:34:45.798] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: 'f11af749-7200-493c-8319-9a7ee1a5afc5',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T10:34:45.800] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 10:09:45', 1 ],
+  __knexQueryUid: '7e31a366-c36e-4b2f-bf23-5a3396ac6d25',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T10:34:45.814] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '7ae933ed-0144-4c83-ba5d-0ec710bf0628',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:34:45.830] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'cd94b1db-3a51-4f84-bb36-990b09336947',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:34:45.838] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '6e6eb05c-3cd4-48a5-bb0e-3e94c8dd91e7',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T10:36:55.843] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: 'e9cc7eff-456e-4407-9ee0-c460b81ce822',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T11:01:44.208] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'f940910c-6122-44d5-abf0-8ed305167f52',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:01:53.144] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '0f876b09-0c74-408a-88c3-75d07673d125',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T11:01:53.147] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 11:09:53', 1 ],
+  __knexQueryUid: 'a07e11ef-3526-4f11-8f71-c0cf6d361c3e',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T11:01:53.160] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'b78d7c5e-4516-4cfa-9b8a-a62ab69ffee2',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:01:53.174] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '590301b7-d3e3-4124-86ec-20b7958c0369',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:01:53.182] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'f582ff5f-590a-4087-bf6e-8ab2dc90e971',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:05:36.076] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'fe7298d0-b7bf-4a97-b6ae-08f972dae46f',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:05:38.655] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: 'c6b975ed-6a43-4657-841d-5273ca2e9140',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T11:05:38.658] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 11:09:38', 1 ],
+  __knexQueryUid: 'da3b2bfd-bcd5-484e-a14d-5e7dbb961d24',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T11:05:38.669] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '7e9c4bd7-ad9c-40b4-bf4c-900823b7074a',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:05:38.682] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '61f5c9fd-b8d4-467e-8c81-025e928ec98d',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:05:38.691] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '86e9d283-ffd7-4173-af59-c6442f8b8492',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:08:08.147] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '629185b7-872d-480d-8197-da4b4b9c4f0a',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:08:17.175] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '272702ba-17ff-4fa3-8b92-c9c10e9500bc',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:08:20.014] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '856734ef-b9c9-457d-9484-73b97cc85f0f',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T11:08:20.016] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 11:09:20', 1 ],
+  __knexQueryUid: 'df80e6b7-04b2-4efd-82ef-739f0f99e6cc',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T11:08:20.035] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '75f93f1b-c7f3-40a0-ae22-50bfda38693c',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:08:20.053] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'b8487856-ec8f-4f53-972b-cce2d5f0d65c',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:08:20.063] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '80635ddc-055d-4c37-ba82-af361801c94c',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:08:41.819] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'd2a59d1a-a8a4-4f2e-83f7-42148ca89822',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:09:01.183] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'dd7db902-0146-46b2-9659-de53b9ae99b7',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:09:10.883] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '426a23fa-4e46-4e57-b637-f48e1c1a26e5',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:09:28.849] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '39a1468b-e229-4c6f-9ddd-c69ff6e09b22',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:10:22.893] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '9b084d22-b5fa-4a6b-8b5b-a417ffb95af8',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:10:25.845] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '3be61ff7-95ef-4379-bec3-99712f5e6c74',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T11:10:25.849] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 11:09:25', 1 ],
+  __knexQueryUid: 'ec123b66-49cd-437f-9592-694162a061d6',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T11:10:25.861] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '011cd14d-c1d7-4d5a-a7fb-982ed975c325',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:10:25.876] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '684b5a23-c003-40e6-8d62-a4ccd9f13251',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:10:25.884] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'bb64f8b2-359c-4fec-9bf6-a30f32264e1e',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:10:30.269] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '7da19d2a-9034-46b6-857d-027b6864691f',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:10:31.597] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '09501919-d0e3-49a9-afa0-b8fe5494e617',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:10:31.617] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 0 ],
+  __knexQueryUid: 'bd904991-6784-4fdb-86f2-1647f441cc24',
+  sql: 'select *, (SELECT COUNT(*) FROM member) AS totalcount from `member` where `seq` <> ? order by `seq` desc'
+}
+[2021-09-15T11:10:39.821] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '871a61bf-2007-46ef-a3ed-e4efe823edbd',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T11:10:39.825] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 11:09:39', 1 ],
+  __knexQueryUid: '75a6cfc0-7abd-4f29-9f09-0b05b08b5e76',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T11:10:39.838] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '3c058220-d5fc-40e3-ac43-a23d9dae5ee7',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:10:39.851] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '17a50166-49a2-4722-aa00-1a68dcb0df56',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:10:39.859] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '5a4ee914-2fd6-4d41-82bb-ee85f442e196',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:10:52.453] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '881531d7-ec17-4321-978e-583c106da29f',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:10:53.231] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'cf4df586-65b3-4355-b8c5-3802460d2f21',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:10:57.816] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'fecf44ad-f7cd-46d5-b33e-84107190f887',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:11:08.293] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '52cc390f-cad1-47af-a2f5-6c593a9c8f9d',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T11:11:08.296] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 11:09:08', 1 ],
+  __knexQueryUid: '3104b0ea-9779-4292-8fab-7968df3a7033',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T11:11:08.308] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '1e6424e7-bf9a-4605-880d-d1ee2a29769c',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:11:08.325] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '7ea21188-0b1f-4f59-856f-7a3f3faa2719',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:11:08.335] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '5ea0c49d-80e7-40a3-b189-5a0a6e982d9e',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:11:10.536] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '82652b69-e4b9-42ac-a697-cd81bce4c778',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:17:31.791] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: '2d1a92ce-bf03-44f1-8f4c-f9a9332d3b25',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:20:16.559] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'ea56fe5d-fa32-48ce-9e7f-e363d706d907',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:20:21.601] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'fe7ff05a-77f9-4321-a69b-b23d5e2c22ac',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:20:24.106] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '3ba3f46d-fba1-4c9c-8bc4-a3a0e2a57f25',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T11:20:24.109] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 11:09:24', 1 ],
+  __knexQueryUid: '117d068c-b82f-4523-b08a-be07b9ff2ef8',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T11:20:24.119] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '5fc56689-7101-40c9-b69e-01221f7e7b3c',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:20:24.132] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '9ed7eef6-e77c-4fa2-9cbb-4c3396439842',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:20:24.141] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '381929ff-2cc6-4915-9648-5bf34e209a39',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:20:38.816] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'e5910e13-37c9-4698-bd91-4b85b1e234ae',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:20:39.851] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '70100f4c-2f05-4b99-ab0b-7c5662e347cd',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:20:42.674] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: 'efbed0d2-9f37-4541-9e5a-e7a3a88a86f5',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T11:20:42.677] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 11:09:42', 1 ],
+  __knexQueryUid: '2980ed8f-5ea4-4661-9df2-1f3acfa61e64',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T11:20:42.689] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'cfa79f95-003a-4c94-aae5-95bb952e4015',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:20:42.703] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'cf8ed119-4f79-4210-9151-2ccd471ff109',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:20:42.713] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '44bc7382-c00b-49f8-8187-4a30e9a8e29b',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:20:55.161] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '71e23add-f886-4979-8f6e-266c6c9ae242',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T11:20:55.163] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 11:09:55', 1 ],
+  __knexQueryUid: '03c7e029-1540-4626-bdd4-c01278485957',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T11:20:55.175] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '5a104519-8931-4bc7-b2fa-0434667ab378',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:20:55.188] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '46415d0a-c30c-49d8-9618-a1fa70f27218',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:20:55.196] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '2f2ebe29-cf65-44b6-a6aa-44edd318b726',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:22:36.629] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'b8790dce-6289-44ab-9822-2a47b833b7c7',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:22:43.666] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'ollagaza', 1 ],
+  __knexQueryUid: 'c3ac8e79-e0b2-4ccd-9cb4-d98ab40a7428',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T11:22:43.670] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 11:09:43', 2 ],
+  __knexQueryUid: 'eb9ad76c-9bd7-4987-96f1-d62ab7a2486d',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T11:22:43.682] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: '8553bb57-2847-425d-bac5-c15f1b5068e9',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:22:43.695] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: '5c7aa856-7f24-429d-9c96-ef67f06b2bf8',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:22:43.703] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: '52ba4084-46ea-4d3d-8921-4051ad5898d8',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:23:07.682] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: 'd3221fc4-5bc7-4985-94d4-1f8f863a6bef',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:23:14.469] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: '325e0292-6fb7-498d-9304-c268d763dd7c',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:23:17.716] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: '018f7db8-b97a-4900-8f8c-640be5cf6933',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:23:40.646] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: 'd5473b4e-2c56-4cf4-8357-7a5212ce3289',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:23:41.302] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 2, 1 ],
+  __knexQueryUid: '26f41bd6-5625-4c1c-8efe-32161967863b',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:23:44.041] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '2e4f101b-c90c-4b4d-bd23-c58a84d81c96',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T11:23:44.044] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 11:09:44', 1 ],
+  __knexQueryUid: '249eec03-1711-4f1d-a17f-852eeabeea61',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T11:23:44.057] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '71515d23-19a6-4d51-8a4c-e82da054ecf6',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:23:44.071] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '66d4eab5-8cd0-45a6-956e-55ad2462070d',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:23:44.079] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '41d69a21-9465-437e-a8eb-025a84d3dd49',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:23:49.040] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '20d7b242-fa07-4041-bf61-e268ed17a433',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:24:13.762] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'bffcf096-6f35-412a-9ff7-d9f6fbf8d4a8',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:24:27.160] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '7fd35499-1b99-49d3-82f9-de912c000a00',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:24:32.940] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '294772fb-3d3e-40eb-bb96-26bece014dfe',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:24:33.470] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'a542e375-fe30-44f9-8c59-a67eb5e95afb',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:24:33.787] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '7f4e10c0-ab86-4e85-be07-1d3ab73c3c94',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:24:34.082] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '3faba8a6-adc3-4c30-b3d0-48a14b6f5ba0',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:24:34.384] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '9d4b932b-4d60-4f50-8839-1047c441283b',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:24:45.424] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: 'c24e6e68-fe45-485e-96f0-42800f92d85e',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T11:24:45.428] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 11:09:45', 1 ],
+  __knexQueryUid: 'd2e17977-6f74-4fbf-8b69-f4930e107fcb',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T11:24:45.440] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '31ef55f5-9a43-428a-8c07-d095eb2752ba',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:24:45.452] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'e9e34053-025c-48b1-98ad-7879b9334cf1',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:24:45.459] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'fffcf79a-6078-4a6f-ac61-6aa930424d58',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:24:49.263] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '61581652-3641-4c53-8daf-cf32911c8d42',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:45:19.493] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '5ef220a2-d06b-4bb0-b797-2ef7f5047c25',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:45:37.301] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '5fba2688-62a5-44db-a143-667107db925d',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T11:45:37.304] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 11:09:37', 1 ],
+  __knexQueryUid: '4db08388-9ed8-4e21-9f0e-df98737b17d0',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T11:45:37.313] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'ce264775-d90e-4d79-9c20-369a50a51dbd',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:45:37.328] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '22f1854f-34d1-4695-8bf1-55969e238ee8',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:45:37.338] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '642a0b06-484d-4d24-9d45-9e62014a1a5a',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:45:39.402] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '78e662da-9c8f-4532-8bba-8be75f2582d4',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:57:25.853] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'c89652eb-9db5-43c0-9e52-d5cf92aa90f0',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T11:57:25.887] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '5136a578-dbbe-4a15-8b17-9a02dc214eb2',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T12:21:02.444] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '1e56e9a4-1576-411c-b15b-e166e76ecdc5',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T12:21:02.448] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 12:09:02', 1 ],
+  __knexQueryUid: 'd030973d-c692-4b3c-a7d4-0b08b0d613a2',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T12:21:02.462] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'ce53ac41-ece3-4b5e-ab58-13f5c8212d89',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T12:21:02.479] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '391fe8d0-baa8-47cf-886f-8d4f61781786',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T12:21:02.488] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '0f5d3b12-df89-41f0-bac1-3e0b6a446c15',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T12:21:59.839] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '6e5beabb-ea51-4eba-a1eb-ed3ce3780fe5',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T12:21:59.852] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '5d52b489-b57b-43cc-98a0-a04860945334',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T12:22:27.297] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '06dccf4f-ae99-462e-9945-3bbf41d486ee',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T12:22:27.302] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'ffbbdb29-2a8f-4115-81b4-4667a085b60f',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T12:25:07.209] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '0496599a-7d60-49d8-9860-af505613fafe',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T12:25:07.259] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'aa85ac4c-3b86-427d-9106-3ef25ec53985',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T12:25:17.250] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '20cc7a43-4cba-4f10-b65d-23e1cd0ecb09',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T12:25:17.254] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 12:09:17', 1 ],
+  __knexQueryUid: '6daaa67a-355b-44fd-9ce7-c7c7616cf41b',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T12:25:17.266] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '01f59d8f-95a8-4c75-917d-9bed94ebdbfc',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T12:25:17.279] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'f28e9b67-f61c-4fe5-8917-40c1e3631451',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T12:25:17.288] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '0ae0459d-0b3c-4ed6-821f-d212346c9df9',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T12:26:12.103] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '8f0748f2-1edf-4f8f-9fb3-48cc8d32dccb',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T12:26:12.117] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '731b972c-5258-4b39-9895-566d1dd12376',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T12:26:19.663] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '983d210d-3298-4bb2-b3e1-f2825bba8b3a',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T12:26:19.700] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '8d462744-cbe9-4609-9df8-d66bbf88eb64',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T12:26:28.017] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '756e7b9c-12d1-4deb-8458-a963c0b578bd',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T12:26:28.020] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 12:09:28', 1 ],
+  __knexQueryUid: '6c6013f1-3453-40a2-9bec-0aa784022676',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T12:26:28.032] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '140349cb-8fb8-460c-828a-b2c1ff5ae258',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T12:26:28.046] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: 'b363b766-3b18-45e6-b570-8178a7a1743a',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T12:26:28.054] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '05b60287-bcd1-4594-89ed-13e741caa68f',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T12:27:24.144] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: 'bc07df25-6cf0-4ad9-be84-f2846d77e80e',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T12:27:24.145] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 12:09:24', 1 ],
+  __knexQueryUid: '7a38f935-cfac-4189-a59d-0398450072b8',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T12:27:24.159] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '8b2e3e5e-fa6c-4b55-8c66-3b5a64eb03da',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
+[2021-09-15T12:27:24.173] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '4994f58f-02bf-4874-ac42-2258177f5887',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
