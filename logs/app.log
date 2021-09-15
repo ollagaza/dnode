@@ -4723,3 +4723,63 @@ From previous event:
   __knexQueryUid: '4994f58f-02bf-4874-ac42-2258177f5887',
   sql: 'select * from `member` where `seq` = ? limit ?'
 }
+[2021-09-15T12:29:50.245] [INFO] default - {
+  ENV: 'development',
+  IS_RELEASE: false,
+  IS_DEV: true,
+  IS_LOCAL: false,
+  IS_DEMON: false,
+  PRINT_DB_LOG: true,
+  LOG_PATH: 'logs',
+  MYSQL_HOST: null,
+  MONGODB_HOST: null
+}
+[2021-09-15T12:29:50.860] [DEBUG] default - add api ./d1/auth.js /d1/auth
+[2021-09-15T12:29:50.863] [DEBUG] default - add api ./d1/test.js /d1/test
+[2021-09-15T12:29:50.864] [DEBUG] default - add api ./d1/users.js /d1/users
+[2021-09-15T12:29:50.868] [DEBUG] default - add api ./s1/auth.js /s1/auth
+[2021-09-15T12:29:50.870] [DEBUG] default - add api ./s1/test.js /s1/test
+[2021-09-15T12:29:50.872] [DEBUG] default - add api ./s1/users.js /s1/users
+[2021-09-15T12:29:50.901] [DEBUG] default - Listening on port 3600 -> PID: 22916
+[2021-09-15T12:29:50.901] [DEBUG] default - [InitService] init start
+[2021-09-15T12:29:50.957] [DEBUG] default - [MySQL]
+ {
+  method: 'select',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [],
+  __knexQueryUid: 'e2ac3e83-7c2c-4db4-b667-f9571ee965d9',
+  sql: 'select * from `service_config`'
+}
+[2021-09-15T12:29:50.962] [DEBUG] default - [InitService] init complete
+[2021-09-15T12:30:09.000] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 'test', 1 ],
+  __knexQueryUid: '1364b174-658c-4aac-9da3-f12ce69aa316',
+  sql: 'select * from `member` where `user_id` = ? limit ?'
+}
+[2021-09-15T12:30:09.005] [DEBUG] default - [MySQL]
+ {
+  method: 'update',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ '2021-09-15 12:09:09', 1 ],
+  __knexQueryUid: 'b3c276ce-210e-4ff9-929e-24ddb5883293',
+  sql: 'update `member` set `lastlogin` = ? where `seq` = ?'
+}
+[2021-09-15T12:30:09.024] [DEBUG] default - [MySQL]
+ {
+  method: 'first',
+  options: {},
+  timeout: false,
+  cancelOnTimeout: false,
+  bindings: [ 1, 1 ],
+  __knexQueryUid: '88392a0b-3dae-4093-b29c-15f9445047f6',
+  sql: 'select * from `member` where `seq` = ? limit ?'
+}
